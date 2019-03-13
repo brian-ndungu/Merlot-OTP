@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class OneTimePin{
+public class OneTimePin extends OTP{
   void OneTimePin(){
     
   }
@@ -14,4 +14,14 @@ public class OneTimePin{
   {
     
   }
+  
+  
 }
+ public class OTp{
+      
+        String clientID;
+        boolean status;
+        String statusMsg;
+        
+        
+    }
