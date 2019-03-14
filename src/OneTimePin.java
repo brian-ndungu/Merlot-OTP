@@ -5,8 +5,9 @@ import java.util.concurrent.TimeUnit;
 import 
 
 public class OneTimePin extends OTP{
-  
+  int otpcode;
   OTP node=new otp();
+  
   void OneTimePin(){
     
   }
@@ -14,7 +15,7 @@ public class OneTimePin extends OTP{
   
   sendOTP(){}
   
-  void verifyOTP()
+  bool verifyOTP(OTP obj)
   {
           System.out.println("Waiting for input...");
           
@@ -26,6 +27,21 @@ public class OneTimePin extends OTP{
           //recieves OTP obj
          
         System.out.println("OTP from ATM recieved. Attempting verification.");
+        if(obj.otp==otpcode)//otp verified
+        {
+          obj.status=true;
+          obj.statusMsg="Verification Successful";
+        }
+        else if(obj.otp==null)//otp 
+            {
+               obj.status=false;
+              obj.statusMsg="Time Period Expired";
+            }
+          else if(obj.otp!=otpcode)
+                {
+                      obj.status=false;
+                      obj.statusMsg="Incorrect pin";
+                }
   }
   
   
@@ -35,7 +51,7 @@ public class OneTimePin extends OTP{
         String clientID;
         boolean status;
         String statusMsg;
-        int otp;
+        int otp=null;
         
           
         
