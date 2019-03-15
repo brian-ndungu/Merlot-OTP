@@ -34,11 +34,48 @@ public class OneTimePin{
     }
 
     /** Communicate with ATM */
-    private void verifyOTP(){
-
-    }
+   bool verifyOTP(OTP obj)
+  {
+          System.out.println("Waiting for input...");
+          
+          System.out.println();
+          System.out.println();
+          System.out.println();
+          System.out.println();
+          TimeUnit.SECONDS.sleep(5);
+          //recieves OTP obj
+         
+        System.out.println("OTP from ATM recieved. Attempting verification.");
+        if(obj.otp==otpcode)//otp verified
+        {
+          obj.status=true;
+          obj.statusMsg="Verification Successful";
+        }
+        else if(obj.otp==null)//otp not entered and so is null
+            {
+               obj.status=false;
+              obj.statusMsg="Time Period Expired";
+            }
+          else if(obj.otp!=otpcode)// otp code not the code sent
+                {
+                      obj.status=false;
+                      obj.statusMsg="Incorrect OTP";
+                }
+    
+   \\edit audit log accordingly
+  }
 
     public String getAuthenticationStatus(){
 
     }
 }
+public class OTPclient{
+      
+        String clientID;
+        boolean status;
+        String statusMsg;
+        String otp=null;
+        
+          
+        
+    }
