@@ -61,7 +61,11 @@ public class OneTimePin{
                       obj.statusMsg="Incorrect OTP";
                 }
     
-   \\edit audit log accordingly
+   //edit audit log accordingly
+     //open audit log file
+       //enter current date and time
+       //enter status update//
+        //close file
   }
 
     public String getAuthenticationStatus(){
