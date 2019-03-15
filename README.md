@@ -1,36 +1,21 @@
 # MERLOT-OTP
 
-One Paragraph of project description goes here
+We are group 15 and have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for, the Notification Subsystem in which we will pass the OTP to be send to a client and we will interact with the ATM Subsystem that in which we will process the input and verify if the OTP's match.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The development of the OTP service package was done using Maven and Jersey (RESTful API Java library).
 
-### Prerequisites
+## Additinal Information
+We have determined that we will receive the client ID in the form of a JSON object in which we will parse to retrieve the relevant information.
+From there we will prepare JSON objects to send to both the Notification as well as the Authentication subsystems to pass the data and information efficiently.
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+The JSON objects will take the form of:
+OTPObject { "clientID" : "12345",
+            "otpNumber" : "678956",
+            "status" : "Successful/Unsuccessful",
+            "statusMessage" : "Successful/Timeout/IncorrectPin"
+          }
 
 ## Running the tests
 
@@ -38,19 +23,11 @@ Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+The tests involved within this OTP module include the various Test Cases such as:
+- Successful OTP input
+- Notification Exceptions
+- ATM Exceptions
+- Incorrect inputs
 
 ## Deployment
 
@@ -72,9 +49,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Brian Ndung'u (Integration Lead)
+Dylan Schwikkard (Software Testing and Documentation)
+Theoveshen Naidu (Project Manager)
+Tlou Lebelo (Software testing Lead)
+Alessio Rossi (Documentation Lead)
 
 ## License
 
