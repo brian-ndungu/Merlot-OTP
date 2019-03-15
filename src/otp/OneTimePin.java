@@ -10,7 +10,7 @@ public class OneTimePin{
     }
 
     /**Random Generator for the OTP  */
-    private char[] generateOTP( int len ){
+    public char[] generateOTP( int len ){
         // Using numeric values 
         String numbers = "0123456789"; 
   
@@ -39,6 +39,6 @@ public class OneTimePin{
     }
 
     public String getAuthenticationStatus(){
-
+        return "";
     }
 }
