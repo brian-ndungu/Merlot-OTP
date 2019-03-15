@@ -69,13 +69,9 @@ public class OneTimePin{
 
     }
 }
-public class OTPclient{
-      
+public class OTPclient{//simulates otpfrom atm
         String clientID;
         boolean status;
         String statusMsg;
-        String otp=null;
-        
-          
-        
+        String otp=null; 
     }
