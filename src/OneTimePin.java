@@ -4,7 +4,6 @@
 import java.util.*;
 
 public class OneTimePin{
-
     void OneTimePin(){
 
     }
