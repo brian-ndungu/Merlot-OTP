@@ -70,12 +70,8 @@ public class OneTimePin{
     }
 }
 public class OTPclient{
-      
         String clientID;
         boolean status;
         String statusMsg;
-        String otp=null;
-        
-          
-        
+        String otp=null; 
     }
