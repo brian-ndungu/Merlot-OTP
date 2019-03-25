@@ -11,6 +11,7 @@ We have determined that we will receive the client ID in the form of a JSON obje
 From there we will prepare JSON objects to send to both the Notification as well as the Authentication subsystems to pass the data and information efficiently.
 
 The JSON objects will take the form of:
+
 OTPObject { "clientID" : "12345",
             "otpNumber" : "678956",
             "status" : "Successful/Unsuccessful",
