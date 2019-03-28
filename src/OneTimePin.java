@@ -66,6 +66,9 @@ public class OneTimePin{
        //enter current date and time
        //enter status update//
         //close file
+       //call check function to see if log is full or tie expired
+       
+       
   }
 
     public String getAuthenticationStatus(){
