@@ -1,6 +1,6 @@
-# MERLOT-OTP
+# MERLOT-OTP (COS301 - 2019)
 
-We are group 15 and have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for, the Notification Subsystem in which we will pass the OTP to be send to a client and we will interact with the ATM Subsystem that in which we will process the input and verify if the OTP's match.
+We as the OTP group, part of the Merlot Team, have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for and the Notification Subsystem in which we will pass the OTP to be send to a client.
 
 ## Getting Started
 
@@ -17,31 +17,22 @@ OTPObject { "clientID" : "12345",
             "statusMessage" : "Successful/Timeout/IncorrectPin"
           }
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
 ### Break down into end to end tests
 
 The tests involved within this OTP module include the various Test Cases such as:
 - Successful OTP input
 - Notification Exceptions
-- ATM Exceptions
 - Incorrect inputs
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Deployment will take the form of being hosted on a server for demonstration purposes, to show the working of a system before it is incorporated into a complete system.
 
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -53,14 +44,9 @@ Brian Ndung'u (Integration Lead)
 Dylan Schwikkard (Software Testing and Documentation)
 Theoveshen Naidu (Project Manager)
 Tlou Lebelo (Software testing Lead)
-Alessio Rossi (Documentation Lead)
+Alessio Rossi (Documentation Lead and Project Management)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
