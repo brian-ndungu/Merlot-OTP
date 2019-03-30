@@ -18,6 +18,9 @@ public class OTP {
 //		Client client=ClientBuilder.newClient();
     }
 	
+	public OTPClient getClient() {
+		return obj;
+	}
     /**Random Generator for the OTP  */
     public void generateOTP( int len ){
         // Using numeric values 
@@ -38,16 +41,16 @@ public class OTP {
 //        otpcode="456";
     }
 
-    public void setOTP(String setO) {
-    	otpcode=setO;
+    public void setOTP() {
+    	obj.setOtp(otpcode);
     }
     /** Communicate with Notification */
     public boolean sendOTP(boolean sent){
     	if(sent==true) {
-    		obj.statusMsg="Sent to notification";
+    		obj.setStatusMsg("Sent to notification");
     		return true;
     	}else {
-    		obj.statusMsg="Failure due to notification not being sent";
+    		obj.setStatusMsg("Failure due to notification not being sent");
     		return false;
     	}
 //    	WebTarget target = client.target("http://localhost:8080/rest/book/PHP");
@@ -55,15 +58,15 @@ public class OTP {
     }
     
     private String getATMOTP() {
-    	if(obj.otp=="") {
+    	if(obj.getOtp()=="") {
     		String atmotp="456";
     		return atmotp;
     	}else
-    		return obj.otp;
+    		return obj.getOtp();
     }
 
     public void setATMOTP(String atmO) {
-    	obj.otp=atmO;
+    	obj.setOtp(atmO);
     }
     /** Communicate with ATM 
      * @throws InterruptedException */
@@ -77,29 +80,29 @@ public class OTP {
 	        System.out.println();
 	        TimeUnit.SECONDS.sleep(5);
 	        //recieves OTP obj
-	        obj.otp=getATMOTP();
+	        obj.setOtp(getATMOTP());
 			  System.out.println("OTP from ATM recieved. Attempting verification.");
-			  if(obj.otp==otpcode)//otp verified
+			  if(obj.getOtp()==otpcode)//otp verified
 			  {
-			    obj.status=true;
-			    obj.statusMsg="Verification Successful";
+			    obj.setStatus(true);
+			    obj.setStatusMsg("Verification Successful");
 			  }
-			  else if(obj.otp==null)//otp 
+			  else if(obj.getOtp()==null)//otp 
 			      {
-			         obj.status=false;
-			        obj.statusMsg="Time Period Expired";
+			         obj.setStatus(false);
+			        obj.setStatusMsg("Time Period Expired");
 			  }
-			  else if(obj.otp!=otpcode)
+			  else if(obj.getOtp()!=otpcode)
 		          {
-		                obj.status=false;
-		                obj.statusMsg="Incorrect pin";
+		                obj.setStatus(false);
+		                obj.setStatusMsg("Incorrect pin");
 		          }
 			  if(!sent) {
-				  obj.status=false;
-				  obj.statusMsg="Notification transmission error";
+				  obj.setStatus(false);
+				  obj.setStatusMsg("Notification transmission error");
 			  }else if(!received) {
-				  obj.status=false;
-				  obj.statusMsg="ATM OTP not received error";
+				  obj.setStatus(false);
+				  obj.setStatusMsg("ATM OTP not received error");
 			  }
     	}
     	return obj;
