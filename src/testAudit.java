@@ -19,11 +19,15 @@ public class testAudit {
         // TODO code application logic here
         
         OTP node=new OTP();
+        node.clearTheFile();
         OTPclient cl=new OTPclient();
+        for(int i=0;i<49;i++){
         cl.otp=node.generateOTP(4).toString();
         node.otpcode=cl.otp;
         node.verifyOTP(cl);
         System.out.println(cl.statusMsg);
+        }
+        node.displayAudit();
     }
     
 }
