@@ -159,4 +159,13 @@ class OTP {
     public String getAuthenticationStatus(){
         return "";
     } 
+      public void displayAudit() throws FileNotFoundException, IOException
+    {File file = new File("C:\\Users\\User\\Documents\\2019\\301\\test\\test.txt"); 
+       BufferedReader br = new BufferedReader(new FileReader(file)); 
+     String st; 
+    while ((st = br.readLine()) != null){
+        System.out.println(st);
+    }
+    
+    }
 }
