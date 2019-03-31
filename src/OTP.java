@@ -57,7 +57,7 @@ class OTP {
           System.out.println();
           System.out.println();
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(0);
             //recieves OTP obj
         } catch (InterruptedException ex) {
             Logger.getLogger(OTP.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,6 +97,7 @@ class OTP {
      
     BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/User/Documents/2019/301/test/test.txt",true));
     writer.write(fileContent);
+    writer.newLine();
     writer.close();
 }
   public void audit()throws Exception
@@ -110,21 +111,23 @@ class OTP {
      String st; 
     while ((st = br.readLine()) != null){
         count++;
-        if(count ==2)
+        if(count ==3)
         {
+            //System.out.println(st);
             start =Integer.parseInt(st.substring(15,17 ));
+            System.out.println(start);
         }
         place=st;
     }
-    end=Integer.parseInt(place.substring(15,17 ));
+    end=Integer.parseInt(getDate().substring(14,16));
     //check if file full 
-    if(count==50)
+    if(count==52)
     {
         //send to people at reports
         clearTheFile();
-    }else//check if time is overdue
+    }else if(start!=0)//check if time is overdue
     {
-        if((end-start)>=15||(end-start)<=0)
+        if((end-start)>=15||(end-start)<0)
         {
             clearTheFile();
         }
@@ -143,9 +146,10 @@ class OTP {
         fwOb.close();
         
         //adds headers to top of file to understand contents better
-        String fileContent="<Date><clientID><Status><StatusMessage><OTP><GenOTP>";
+        String fileContent="<Date><clientID><Status><StatusMessage><OTP><GenOTP>"+'\n';
          BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/User/Documents/2019/301/test/test.txt"));
     writer.write(fileContent);
+    writer.newLine();
     writer.close();
         
     }
@@ -159,7 +163,7 @@ class OTP {
     public String getAuthenticationStatus(){
         return "";
     } 
-      public void displayAudit() throws FileNotFoundException, IOException
+    public void displayAudit() throws FileNotFoundException, IOException
     {File file = new File("C:\\Users\\User\\Documents\\2019\\301\\test\\test.txt"); 
        BufferedReader br = new BufferedReader(new FileReader(file)); 
      String st; 
