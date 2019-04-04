@@ -1,4 +1,4 @@
-# MERLOT-OTP (COS301 - 2019)
+# MERLOT-OTP(COS301 - 2019)Edit me
 
 We as the OTP group, part of the Merlot Team, have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for and the Notification Subsystem in which we will pass the OTP to be send to a client.
 
