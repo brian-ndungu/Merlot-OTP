@@ -80,7 +80,7 @@ function generatePin(clientID)
     } 
      limit=limit+1;
 
-     arr[clientID]=OTP;
+     createEntry(clientID,OTP);
    addLog(clientID,OTP);
    
     
