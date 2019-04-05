@@ -104,14 +104,14 @@ function validate(ID,pin)
 
     	
 
-function sendLog()
+async function sendLog()
 {
 	var contents = fs.readFileSync('auditLog.txt', { 'encoding': 'utf8'});
 	console.log(contents.toString());
-	var postData = JSON.parse({'"log_set"':contents});
-	console.log("Log ready to send") ;
-	console.log(JSON.stringify(postData));
-	var host= 'https://still-oasis-34724.herokuapp.com';
+
+	var postData={"logs":[{"cardID":7889455,"cardType":"Student","clientID":1,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":2,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":3,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":4,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":5,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"}],
+"system":"otp"};
+var host= 'https://still-oasis-34724.herokuapp.com';
 	//port: 80,
 	var path= '/uploadLog';
 	var options ={
@@ -123,6 +123,7 @@ function sendLog()
 	};
 	return await rp(options)
 	.then(function (parseBody){
+		
 		return parseBody;
 	})
 	.catch(function(err)
@@ -130,7 +131,7 @@ function sendLog()
 		console.log(err);
 
 	});
-	clearLog();
+	
 
 
 }
@@ -194,6 +195,7 @@ fs.appendFile('auditLog.txt',data.toString()+',', 'utf8',
         // if no error
         console.log("Data is appended to log successfully. Data will now be sent over server");
         sendLog();
+        clearLog();
 });
 		
 		return;
