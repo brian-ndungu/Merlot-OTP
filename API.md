@@ -3,7 +3,17 @@
 ## OTP Authentication
 Description Here
 ```javascript 
-Object function(Object data);
+function validate(ID,pin)
+if(retrieveOTP(ID)==pin)
+	{
+			RemoveOTP(ID)=null;
+			console.log(arr);
+			return "success";
+
+	}else
+	{
+		return "failed";
+	}
 ```
 @return: Will return either Authenticated or throw an Exception
 >**Authenticated**: A Status
@@ -20,6 +30,10 @@ Object function(Object data);
 example usage: 
 Java
 ```java
-  // E.g. Code
+ var obj= {
+	"ClientID":"1",
+	"type":"generate"
+}
+
 ```
 
