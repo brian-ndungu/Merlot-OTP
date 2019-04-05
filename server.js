@@ -109,8 +109,7 @@ async function sendLog()
 	var contents = fs.readFileSync('auditLog.txt', { 'encoding': 'utf8'});
 	console.log(contents.toString());
 
-	var postData={"logs":[{"cardID":7889455,"cardType":"Student","clientID":1,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":2,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":3,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":4,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":5,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"}],
-"system":"otp"};
+	var postData=JSON.parse(contents);
 var host= 'https://still-oasis-34724.herokuapp.com';
 	//port: 80,
 	var path= '/uploadLog';
