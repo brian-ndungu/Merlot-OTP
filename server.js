@@ -108,28 +108,28 @@ function sendLog()
 {
 	var contents = fs.readFileSync('auditLog.txt', { 'encoding': 'utf8'});
 	console.log(contents.toString());
-	// var postData = JSON.parse({'"log_set"':contents});
-	// console.log("Log ready to send") ;
-	// console.log(JSON.stringify(postData));
-	// var host= 'https://still-oasis-34724.herokuapp.com';
-	// //port: 80,
-	// var path= '/uploadLog';
-	// var options ={
-	// 	method :'POST',
-	// 	uri:host+path,
-	// 	body: postData,
-	// 	json: true
+	var postData = JSON.parse({'"log_set"':contents});
+	console.log("Log ready to send") ;
+	console.log(JSON.stringify(postData));
+	var host= 'https://still-oasis-34724.herokuapp.com';
+	//port: 80,
+	var path= '/uploadLog';
+	var options ={
+		method :'POST',
+		uri:host+path,
+		body: postData,
+		json: true
 
-	// };
-	// return await rp(options)
-	// .then(function (parseBody){
-	// 	return parseBody;
-	// })
-	// .catch(function(err)
-	// {
-	// 	console.log(err);
+	};
+	return await rp(options)
+	.then(function (parseBody){
+		return parseBody;
+	})
+	.catch(function(err)
+	{
+		console.log(err);
 
-	// });
+	});
 	clearLog();
 
 
