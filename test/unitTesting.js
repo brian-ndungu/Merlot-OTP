@@ -8,26 +8,31 @@ var rp = require('request-promise');
 describe('OTP unit testing', function () {
   it('Should create an OTP of random numbers', function () {
     var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
       expect(res).to.equal(res);
     });
     it('Should compare otp of specified client with generated otp', function () {
     var res = serve.validate(auth.ClientID,auth.pin);
+      console.log("correct pin");
       expect(res).to.equal("failed");
 
     });
     it('Should compare otp of specified client with wrong otp', function () {
     var res = serve.validate(auth.ClientID,auth.pin);
+      console.log("Incorrect pin");
       expect(res).to.equal("failed");
       
 
     });
-    it('Attempting log without paramater client_id', function () {
+    it('Attempting log without paramater pin', function () {
     var res = serve.addLog(cid,null);
+      console.log(res);
       expect(res).to.equal("failed missing arguement 'pin'");
 
     });
      it('Attempting log without paramater client_id', function () {
     var res =  serve.addLog(null,pin);
+    console.log(res);
       expect(res).to.equal("failed missing arguement 'client_id'");
 
     });
@@ -37,7 +42,7 @@ describe('OTP unit testing', function () {
     var rep =  serve.validate(gen.ClientID,res);
     console.log(gen.ClientID+' '+res);
     console.log("correct pin");
-
+    console.log("verification matches");
       expect(res).to.equal(res);
       expect(rep).to.equal("success");
 
@@ -63,7 +68,7 @@ describe('API testing',function(){
 		expect(res).to.equal("success");
 	//	res = JSON.stringify(res);
 
-		console.log("API test: "+res);
+		console.log("notifications test: "+res);
    		// expect(res).to.equal(true);
 
 	}); 
