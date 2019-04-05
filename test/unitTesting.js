@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var fs = require("fs");
 var serve = require("../a.js");
 var request = require("request");
-
+var rp = require('request-promise');
 
 
 describe('OTP unit testing', function () {
@@ -31,6 +31,17 @@ describe('OTP unit testing', function () {
       expect(res).to.equal("failed missing arguement 'client_id'");
 
     });
+     it('Attempting to perfrom and integration test of gnerating a pin and entering a correct pin', function () {
+    var res =  serve.generatePin(gen.ClientID);
+    console.log(res);
+    var rep =  serve.validate(gen.ClientID,res);
+    console.log(gen.ClientID+' '+res);
+
+
+      expect(res).to.equal(res);
+      expect(rep).to.equal("success");
+
+    });
 });
 
 
@@ -55,7 +66,16 @@ describe('API testing',function(){
 		console.log("API test: "+res);
    		// expect(res).to.equal(true);
 
-	}); 	
+	}); 
+   it('attempting to send log to reports', function () {
+    var res =  sendLog();
+    //console.log(JSON.stringify(res));
+    
+
+      expect(res).to.equal(res);
+      //expect(rep).to.equal("success");
+
+    });	
 })
 
 var gen={
@@ -116,5 +136,35 @@ function makerequest(jsonObj)
   return "success";
 }
 
+async function sendLog()
+{
+  var contents = fs.readFileSync('auditLog.txt', { 'encoding': 'utf8'});
+  console.log(contents.toString());
 
+  var postData={"logs":[{"cardID":7889455,"cardType":"Student","clientID":1,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":2,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":3,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":4,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":5,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"}],
+"system":"otp"};
+var host= 'https://still-oasis-34724.herokuapp.com';
+  //port: 80,
+  var path= '/uploadLog';
+  var options ={
+    method :'POST',
+    uri:host+path,
+    body: postData,
+    json: true
+
+  };
+  return await rp(options)
+  .then(function (parseBody){
+    
+    return 'parseBody';
+  })
+  .catch(function(err)
+  {
+    console.log(err);
+
+  });
+  
+
+
+}
 
