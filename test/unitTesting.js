@@ -11,6 +11,71 @@ describe('OTP unit testing', function () {
     console.log("pin generated is :"+res);
       expect(res).to.equal(res);
     });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
+  it('Should create an OTP of random numbers', function () {
+    var res = serve.generatePin(gen.ClientID);
+    console.log("pin generated is :"+res);
+      expect(res).to.equal(res);
+    });
     it('Should compare otp of specified client with generated otp', function () {
     var res = serve.validate(auth.ClientID,auth.pin);
       console.log("correct pin");
