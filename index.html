@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Merlot OTP</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="The OTP subsystem of the NextGen ATM" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="apple-touch-icon-precomposed" href="media/favicon.png" />
+  <link rel="icon" href="media/favicon.png" />
+  <link rel="shortcut icon" href="media/favicon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="page page-style-guide">
+
+  <main>
+
+    <section class="bg-dark center dark padding">
+      <div class="margin-bottom margin-top max-width-m">
+        <h1>OTP API Documentation</h1>
+        <p class="lead">An easy guide on how to get started.</p>
+      </div>
+    </section>
+
+    <div class="padding">
+      <div class="row max-width-l">
+        <div class="col-one-fifth">
+          <aside class="sidebar">
+            <h6 class="sidebar-header">Components</h6>
+            <ul class="blank">
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#generate">Generate OTP</a></li>
+              <li><a href="#validate">Validate OTP</a></li>
+
+            </ul>
+          </aside>
+        </div>
+        <div class="col-four-fifths">
+
+          <section id="intro">
+            <h4>Introduction</h4>
+            <p class="paragraph">This API makes use of one API definition path in order to make requests.</p>
+            <p class="paragraph">Request URL: <a href="http://merlototp.herokuapp.com/">merlototp.herokuapp.com/</a></p>
+            <br>
+            <table>
+              <tr>
+                <th>Function</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>Generate OTP</td>
+                <td>Initiate an OTP request using a clientID, thereby generating an OTP and submitting it to the notification subsystem in order to send it to the associated e-mail address.</td>
+              </tr>
+              <tr>
+                <td>Validate OTP</td>
+                <td>Validates whether a PIN that is sent in a request matches the saved OTP associated with the clientID.</td>
+              </tr>
+            </table>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="generate">
+            <h4>Generate OTP</h4>
+            <p class="paragraph">Returns the status of whether the OTP was successfully sent.</p>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Constraint</th>
+              </tr>
+              <tr>
+                <td>clientID</td>
+                <td>string</td>
+                <td>Must be an existing clientID in the Client Information System</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>string</td>
+                <td>"generate"</td>
+              </tr>
+            </table>
+            <div class="code-markup">
+              <span class="code-header">Example Request:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"clientID":"003",<br>
+                &nbsp;&nbsp;"type":"generate"<br>
+                }
+              </code>
+              <br>
+              <h5>Successful</h5>
+              <span class="code-header">Example Response:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"ClientID":"003",<br>
+                &nbsp;&nbsp;"Success":"true"<br>
+                }
+              </code>
+              <br>
+              <h5>Failed</h5>
+              <span class="code-header">Example Response:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"ClientID":"003",<br>
+                &nbsp;&nbsp;"Success":"true"<br>
+                &nbsp;&nbsp;"message":"Something went wrong"<br>
+                }
+              </code>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="validate">
+            <h4>Validate OTP</h4>
+            <p class="paragraph">Returns the status of whether the OTP - that had been previously generated - and PIN - that has been sent in the request - match.</p>
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Constraint</th>
+              </tr>
+              <tr>
+                <td>clientID</td>
+                <td>string</td>
+                <td>Must be an existing clientID in the Client Information System</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>string</td>
+                <td>"validate"</td>
+              </tr>
+              <tr>
+                <td>pin</td>
+                <td>string</td>
+                <td>4 digits</td>
+              </tr>
+            </table>
+            <div class="code-markup">
+              <span class="code-header">Example Request:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"clientID":"003",<br>
+                &nbsp;&nbsp;"type":"validate"<br>
+                &nbsp;&nbsp;"pin":"4567"<br>
+                }
+              </code>
+              <br>
+              <h5>Successful</h5>
+              <span class="code-header">Example Response:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"ClientID":"003",<br>
+                &nbsp;&nbsp;"Success":"true"<br>
+                &nbsp;&nbsp;"message":"Correct OTP"<br>
+                }
+              </code>
+              <br>
+              <h5>Failed</h5>
+              <span class="code-header">Example Response:</span>
+              <code class="code-snippet">
+                {<br>
+                &nbsp;&nbsp;"ClientID":"003",<br>
+                &nbsp;&nbsp;"Success":"true"<br>
+                &nbsp;&nbsp;"message":"Incorrect OTP or no OTP created"<br>
+                }
+              </code>
+            </div>
+            
+          </section>
+
+          <div class="divider"></div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer-main bg-light padding">
+    <p class="copyright"><span>COS 301: Software Engineering </span><a href="https://cs.up.ac.za/" target="_blank">University of Pretoria</a><span> - © All rights reserved.</span></p>
+  </footer>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

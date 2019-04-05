@@ -1,6 +1,6 @@
-# MERLOT-OTP
+# MERLOT-OTP (COS301 - 2019)
 
-We are group 15 and have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for, the Notification Subsystem in which we will pass the OTP to be send to a client and we will interact with the ATM Subsystem that in which we will process the input and verify if the OTP's match.
+We as the OTP group, part of the Merlot Team, have been tasked with designing and implementing the OTP subsystem of the new generation ATM. We will be interacting with the Authentication subsystem to receive a client ID to generate an OTP for and the Notification Subsystem in which we will pass the OTP to be send to a client.
 
 ## Getting Started
 
@@ -11,28 +11,22 @@ We have determined that we will receive the client ID in the form of a JSON obje
 From there we will prepare JSON objects to send to both the Notification as well as the Authentication subsystems to pass the data and information efficiently.
 
 The JSON objects will take the form of:
-
 OTPObject { "clientID" : "12345",
             "otpNumber" : "678956",
             "status" : "Successful/Unsuccessful",
             "statusMessage" : "Successful/Timeout/IncorrectPin"
           }
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
 ### Break down into end to end tests
 
 The tests involved within this OTP module include the various Test Cases such as:
 - Successful OTP input
 - Notification Exceptions
-- ATM Exceptions
 - Incorrect inputs
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The application will be deployed through the Heroku online tool that will allow us to host and perform the relevant API calls needed.
 
 ## Built With
 
@@ -40,28 +34,36 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 Brian Ndung'u (Integration Lead)
 Dylan Schwikkard (Software Testing and Documentation)
 Theoveshen Naidu (Project Manager)
 Tlou Lebelo (Software testing Lead)
-Alessio Rossi (Documentation Lead)
+Alessio Rossi (Documentation Lead and Project Management)
 
-## License
+## API information
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+The API calls we have used are all POST based in that we will be posting the information to the relevant subsystems. The API's are seperated into two types that will be used to namely send information to the Notification subsystem as well as the Authentication subsystems.
 
-## Acknowledgments
+The API calls will send JSON structured data through to the relevant subsystems in which they will perform the tasks required.
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+OTP generation will be sent, via the API, to the Notifications subsystem in the format:
+            {
+               "clientID" : 7,
+               "type" : "generate"
+            }
+whereby the type is generate to actually create the OTP relevant to a specific clientID. This information, regarding the clientID is passed to our subsystem by the Authentication subsystem. Within this process, we generate an OTP that will be used to verify an action and we will store it within our system for later verification.
+
+OTP validation, send to the Authentication subsystem, will follow a similar structure and will create the object in the following format:
+            {
+               "clientID" : 7,
+               "type" : "validate",
+               "pin" : "pin"
+            }
+whereby the type will inform the subsystems that receieve the request of the action being performed. The information is once again received from the Authentication subsystem and we are tasked with validating that the correct OTP is enetered to the specific clientID. A reponse code is returned to the Authentication subsystem dictating whether it was successful or not.
+
+
+
+
+
