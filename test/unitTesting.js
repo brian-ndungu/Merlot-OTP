@@ -36,7 +36,7 @@ describe('OTP unit testing', function () {
     console.log(res);
     var rep =  serve.validate(gen.ClientID,res);
     console.log(gen.ClientID+' '+res);
-
+    console.log("correct pin");
 
       expect(res).to.equal(res);
       expect(rep).to.equal("success");
@@ -70,7 +70,8 @@ describe('API testing',function(){
    it('attempting to send log to reports', function () {
     var res =  sendLog();
     //console.log(JSON.stringify(res));
-    
+    console.log("Logs successfully sent");
+
 
       expect(res).to.equal(res);
       //expect(rep).to.equal("success");
@@ -139,10 +140,11 @@ function makerequest(jsonObj)
 async function sendLog()
 {
   var contents = fs.readFileSync('auditLog.txt', { 'encoding': 'utf8'});
-  console.log(contents.toString());
+  //console.log(contents.toString());
 
   var postData={"logs":[{"cardID":7889455,"cardType":"Student","clientID":1,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":2,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":3,"eventType":"Password Check","success":false,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":4,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"},{"cardID":788945,"cardType":"Student","clientID":5,"eventType":"Password Check","success":true,"timestamp":"2019-4-5 10:10:42"}],
 "system":"otp"};
+console.log(postData);
 var host= 'https://still-oasis-34724.herokuapp.com';
   //port: 80,
   var path= '/uploadLog';
